@@ -5,7 +5,7 @@ import axios from "axios";
 import PlaceCard from "../components/PlaceCard";
 
 function Places() {
-  const [places, setPlaces] = useState([]);
+  const [places, setPlaces] = useState([]); //= creates an empty array initially
 
   useEffect(() => {
     axios

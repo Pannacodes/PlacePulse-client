@@ -16,15 +16,15 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
 
-        <Route path="/places" element={<Places />} />
-
         <Route path="/about" element={<About />} />
+
+        <Route path="/places" element={<Places />} />
 
         <Route path="/places/:id" element={<PlaceDetails />} />
 
         <Route path="/places/add" element={<AddPlace />} />
 
-        <Route path="/places/:id/edit" element={<EditPlace />} />
+        <Route path="/places/edit/:id" element={<EditPlace />} />
 
         <Route path="*" element={<NotFound />} />
 

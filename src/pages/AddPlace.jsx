@@ -10,24 +10,35 @@ function AddPlace() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    //this prevents the browser from reloading
-    const newPlace = {
-      contributor,
-      locationName,
-      category,
-      contribution,
-    };
 
     axios
-      .post("http://localhost:5005/places", newPlace)
+      .get(
+        `https://geocoding-api.open-meteo.com/v1/search?name=${locationName}&count=1&language=en&format=json`,
+      )
       .then((response) => {
+        const location = response.data.results[0]; // = "Take the first location returned by Open-Meteo and call it location."
+
+        const newPlace = {
+          contributor,
+          location: location.name,
+          country: location.country,
+          latitude: location.latitude,
+          longitude: location.longitude,
+          category,
+          contribution,
+        }; // ="Create the object that our PlacePulse database needs, using some information from the form and some information from Open-Meteo."
+        
+        axios
+          .post("http://localhost:5005/places", newPlace)
+          .then((response) => {
+            console.log(response.data);
+          });
         console.log(response.data);
       })
       .catch((error) => {
         console.log(error);
       });
   };
-
 
   return (
     <div>
@@ -62,7 +73,9 @@ function AddPlace() {
             <option value="Where I am travelling">Where I am travelling</option>
             <option value="A place I love">A place I love</option>
             <option value="A place I discovered">A place I discovered</option>
-            <option value="A place I used to live">A place I used to live</option>
+            <option value="A place I used to live">
+              A place I used to live
+            </option>
             <option value="Just curious">Just curious</option>
           </select>
         </label>

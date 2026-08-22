@@ -17,6 +17,7 @@ function Places() {
         console.log(error);
       });
   }, []);
+  // "When this page loads, get some data."
 
   return (
     <div>

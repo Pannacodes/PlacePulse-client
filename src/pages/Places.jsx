@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+import PlaceCard from "../components/PlaceCard";
+
 function Places() {
   const [places, setPlaces] = useState([]);
 
@@ -21,20 +23,11 @@ function Places() {
       <h1>Explore Places 🌍</h1>
 
       <Link to="/places/add">
-        <button>Add your place</button>
+        <button>Add a place</button>
       </Link>
 
       {places.map((place) => (
-        <div key={place.id}>
-          <h2>{place.location}</h2>
-          <p>Added by @{place.contributor}</p>
-
-          <p>{place.country}</p>
-
-          <Link to={`/places/${place.id}`}>
-            Check {place.locationName}'s air quality →
-          </Link>
-        </div>
+        <PlaceCard key={place.id} place={place} />
       ))}
     </div>
   );

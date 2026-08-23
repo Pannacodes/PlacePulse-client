@@ -1,4 +1,5 @@
 import { useState } from "react";
+import InfoButton from "./InfoButton";
 
 function getAqiCategory(aqi) {
   if (aqi < 20) {
@@ -29,10 +30,12 @@ function getAqiCategory(aqi) {
   } else {
     return {
       label: "Extremely poor",
-      description: "Air quality is very unhealthy.",
+      description: "Air quality is very poor and pollution levels are high.",
     };
   }
 }
+
+
 
 function AirQualityCard({ airQuality }) {
   const aqiCategory = getAqiCategory(airQuality.european_aqi);
@@ -50,14 +53,26 @@ function AirQualityCard({ airQuality }) {
       </button>
       {showDetails && (
         <div>
-          <p>Fine particles (PM2.5): {airQuality.pm2_5} μg/m³</p>
-          <p>Coarse particles (PM10): {airQuality.pm10} μg/m³</p>
-          <p>Nitrogen dioxide (NO₂): {airQuality.nitrogen_dioxide} μg/m³</p>
-          <p>Ozone (O₃): {airQuality.ozone} μg/m³</p>
+          <h3>Pollutant levels</h3>
+          <p>
+            Fine particles (PM2.5): {airQuality.pm2_5} μg/m³{" "}
+            <InfoButton text="Fine particles smaller than 2.5 micrometers. They can enter deep into the respiratory system." />
+          </p>
+          <p>
+            Coarse particles (PM10): {airQuality.pm10} μg/m³{" "}
+            <InfoButton text="Particles smaller than 10 micrometers that can affect air quality and health." />
+          </p>
+          <p>
+            Nitrogen dioxide (NO₂): {airQuality.nitrogen_dioxide} μg/m³
+            <InfoButton text="Nitrogen dioxide is a gas mainly produced by combustion processes such as traffic and industry." />
+          </p>
+          <p>
+            Ozone (O₃): {airQuality.ozone} μg/m³
+            <InfoButton text="Ground-level ozone is formed through chemical reactions involving sunlight and pollutants." />
+          </p>
         </div>
       )}
-      <h2>Environmental conditions</h2>
-      <p>UV Index: {airQuality.uv_index}</p>
+
     </section>
   );
 }

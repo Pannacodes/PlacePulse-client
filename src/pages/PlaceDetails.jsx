@@ -25,7 +25,7 @@ function PlaceDetails() {
 
     axios
       .get(
-        `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${place.latitude}&longitude=${place.longitude}&current=european_aqi,pm2_5,pm10,nitrogen_dioxide,ozone`,
+        `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${place.latitude}&longitude=${place.longitude}&current=european_aqi,pm2_5,pm10,nitrogen_dioxide,ozone,uv_index`,
       )
       .then((response) => {
         setAirQuality(response.data.current);
@@ -50,7 +50,11 @@ function PlaceDetails() {
 
       <p>{place.contribution}</p>
 
-      {airQuality && <AirQualityCard airQuality={airQuality} />}
+      {airQuality && <AirQualityCard airQuality={airQuality} />} 
+      
+      {//= "If airQuality exists, show the AirQualityCard component."
+      }
+
     </div>
   );
 }

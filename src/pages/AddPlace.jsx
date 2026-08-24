@@ -8,6 +8,7 @@ function AddPlace() {
   const [locationName, setLocationName] = useState("");
   const [category, setCategory] = useState("");
   const [contribution, setContribution] = useState("");
+
   // here with useState I have said "These pieces of state belong to this particular AddPlace component"
 
   const handleSubmit = (event) => {
@@ -18,6 +19,10 @@ function AddPlace() {
         `https://geocoding-api.open-meteo.com/v1/search?name=${locationName}&count=1&language=en&format=json`,
       )
       .then((response) => {
+        if (!response.data.results) {
+          alert("We couldn't find that location. Please check the spelling.");
+          return;
+        }
         const location = response.data.results[0]; // = "Take the first location returned by Open-Meteo and call it location."
 
         const newPlace = {
@@ -53,6 +58,7 @@ function AddPlace() {
             type="text"
             value={contributor}
             onChange={(event) => setContributor(event.target.value)}
+            required
           />
         </label>
         <label>
@@ -61,6 +67,7 @@ function AddPlace() {
             type="text"
             value={locationName}
             onChange={(event) => setLocationName(event.target.value)}
+            required
           />
         </label>
         <label>
@@ -68,6 +75,7 @@ function AddPlace() {
           <select
             value={category}
             onChange={(event) => setCategory(event.target.value)}
+            required
           >
             <option value="">Select one</option>
             <option value="Where I live">Where I live</option>

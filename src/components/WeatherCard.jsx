@@ -1,6 +1,4 @@
-import React from 'react'
-
-
+import React from "react";
 
 function getUvCategory(uv) {
   if (uv <= 2) {
@@ -16,15 +14,20 @@ function getUvCategory(uv) {
   }
 }
 
-function WeatherCard({uv}) {
-const uvCategory = getUvCategory(uv);
+function WeatherCard({ uv, weather }) {
+  const uvCategory = getUvCategory(uv);
 
   return (
     <section>
       <h2>Environmental conditions</h2>
-      <p>UV Index: {uv} — {uvCategory}</p>
+      <p>Temperature: {weather.temperature_2m} °C</p>
+
+      <p>Humidity: {weather.relative_humidity_2m}%</p>
+      <p>
+        UV Index: {uv} — {uvCategory}
+      </p>
     </section>
   );
 }
 
-export default WeatherCard
+export default WeatherCard;

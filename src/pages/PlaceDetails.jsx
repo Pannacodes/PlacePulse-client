@@ -17,6 +17,10 @@ function PlaceDetails() {
   const [airQualityError, setAirQualityError] = useState(false);
   const [airQualityLoading, setAirQualityLoading] = useState(true);
 
+  const [weather, setWeather] = useState(null);
+  const [weatherError, setWeatherError] = useState(false);
+  const [weatherLoading, setWeatherLoading] = useState(true);
+
   useEffect(() => {
     axios
       .get(`http://localhost:5005/places/${id}`)
@@ -47,6 +51,24 @@ function PlaceDetails() {
       });
   }, [place]);
 
+  useEffect(() => {
+    if (!place) return;
+
+    axios
+      .get(
+        `https://api.open-meteo.com/v1/forecast?latitude=${place.latitude}&longitude=${place.longitude}&current=temperature_2m,relative_humidity_2m`,
+      )
+      .then((response) => {
+        setWeather(response.data.current);
+        setWeatherLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        setWeatherError(true);
+        setWeatherLoading(false);
+      });
+  }, [place]);
+
   if (!place && !placeNotFound) {
     return <p>Loading...</p>;
   }
@@ -55,22 +77,19 @@ function PlaceDetails() {
     return <NotFound />;
   }
 
-
   const handleDelete = () => {
-    
     const confirmed = window.confirm("sure?");
     if (!confirmed) return;
-    
-    axios
-    .delete(`http://localhost:5005/places/${id}`)
-    .then (() => {
-      navigate ("/places")
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-  };
 
+    axios
+      .delete(`http://localhost:5005/places/${id}`)
+      .then(() => {
+        navigate("/places");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <div>
@@ -87,12 +106,14 @@ function PlaceDetails() {
 
       {airQualityError && <p>Unable to load air quality data.</p>}
 
-      {airQuality && (
-        <>
-          <AirQualityCard airQuality={airQuality} />
+      {airQuality && <AirQualityCard airQuality={airQuality} />}
 
-          <WeatherCard uv={airQuality.uv_index} />
-        </>
+      {weatherLoading && <p>Loading environmental conditions...</p>}
+
+      {weatherError && <p>Unable to load environmental conditions.</p>}
+
+      {weather && airQuality && (
+        <WeatherCard uv={airQuality.uv_index} weather={weather} />
       )}
       {
         //= "If airQuality exists, show the AirQualityCard component."

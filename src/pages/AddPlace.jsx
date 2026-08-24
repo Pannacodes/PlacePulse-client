@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function AddPlace() {
+  const navigate = useNavigate();
   const [contributor, setContributor] = useState("");
   const [locationName, setLocationName] = useState("");
   const [category, setCategory] = useState("");
@@ -26,14 +28,14 @@ function AddPlace() {
           longitude: location.longitude,
           category,
           contribution,
-        }; // ="Create the object that our PlacePulse database needs, using some information from the form and some information from Open-Meteo."
-        
+        }; // = "Create the object that our PlacePulse database needs, using some information from the form and some information from Open-Meteo."
+
         axios
           .post("http://localhost:5005/places", newPlace)
           .then((response) => {
             console.log(response.data);
+            navigate(`/places/`);
           });
-        console.log(response.data);
       })
       .catch((error) => {
         console.log(error);

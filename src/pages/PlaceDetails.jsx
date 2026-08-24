@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import AirQualityCard from "../components/AirQualityCard";
 import WeatherCard from "../components/WeatherCard";
@@ -7,6 +8,7 @@ import NotFound from "./NotFound";
 
 function PlaceDetails() {
   const { id } = useParams(); // = get the id
+  const navigate = useNavigate();
 
   const [place, setPlace] = useState(null);
   const [placeNotFound, setPlaceNotFound] = useState(false);
@@ -53,6 +55,23 @@ function PlaceDetails() {
     return <NotFound />;
   }
 
+
+  const handleDelete = () => {
+    
+    const confirmed = window.confirm("sure?");
+    if (!confirmed) return;
+    
+    axios
+    .delete(`http://localhost:5005/places/${id}`)
+    .then (() => {
+      navigate ("/places")
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  };
+
+
   return (
     <div>
       <h1>{place.location}</h1>
@@ -75,10 +94,14 @@ function PlaceDetails() {
           <WeatherCard uv={airQuality.uv_index} />
         </>
       )}
-
       {
         //= "If airQuality exists, show the AirQualityCard component."
       }
+      <button onClick={() => navigate(`/places/edit/${id}`)}>
+        Edit contribution
+      </button>
+
+      <button onClick={handleDelete}>Delete place</button>
     </div>
   );
 }

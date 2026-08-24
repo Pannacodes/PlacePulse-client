@@ -63,11 +63,11 @@ function AirQualityCard({ airQuality }) {
             <InfoButton text="Particles smaller than 10 micrometers that can affect air quality and health." />
           </p>
           <p>
-            Nitrogen dioxide (NO₂): {airQuality.nitrogen_dioxide} μg/m³
+            Nitrogen dioxide (NO₂): {airQuality.nitrogen_dioxide} μg/m³ {" "}
             <InfoButton text="Nitrogen dioxide is a gas mainly produced by combustion processes such as traffic and industry." />
           </p>
           <p>
-            Ozone (O₃): {airQuality.ozone} μg/m³
+            Ozone (O₃): {airQuality.ozone} μg/m³ {" "}
             <InfoButton text="Ground-level ozone is formed through chemical reactions involving sunlight and pollutants." />
           </p>
         </div>

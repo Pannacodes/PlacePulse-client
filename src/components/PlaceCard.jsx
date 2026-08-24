@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 function PlaceCard({place}) {
   return (
+    <Link to={`/places/${place.id}`}>
     <article>
 
       <h2>{place.location}</h2>
@@ -11,11 +12,11 @@ function PlaceCard({place}) {
 
       <p>Added by @{place.contributor}</p>
 
-      <Link to={`/places/${place.id}`}>
-        Check @{place.contributor}'s air quality
-      </Link>
-
+      
+      <p>Check @{place.contributor}'s air quality</p>
+      
     </article>
+    </Link>
   )
 }
 

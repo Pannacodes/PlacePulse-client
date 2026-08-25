@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 function Home() {
   return (
     <main>
-      <h1>PlacePulse</h1>
+      <h1 className="text-4xl font-bold text-green-800">PlacePulse</h1>
 
       <h2>Discover the environmental conditions of places around the world.</h2>
 
@@ -66,12 +66,12 @@ function Home() {
       </section>
       <section>
         <section>
-          <h2>Want to understand air pollution in 2 minutes?</h2>
+          <h2>Want to understand air pollution in 3 minutes?</h2>
 
           <iframe
             width="560"
             height="315"
-            src="https://www.youtube.com/embed/VIDEO_ID"
+            src="https://www.youtube.com/embed/e6rglsLy1Ys"
             title="Understanding air pollution"
             allowFullScreen
           ></iframe>

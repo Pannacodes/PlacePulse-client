@@ -92,38 +92,112 @@ function PlaceDetails() {
   };
 
   return (
-    <div>
-      <h1>{place.location}</h1>
-      <h2>{place.country}</h2>
+    <main className="mx-auto w-full max-w-5xl px-5 py-10 sm:px-8 sm:py-14">
+      {/* Place header */}
+      <section className="mb-10">
+        <p className="mb-2 text-sm font-medium uppercase tracking-wider text-moss">
+          {place.category}
+        </p>
+        <h1 className="font-display text-4xl font-bold text-ink sm:text-6xl">
+          {place.location}
+        </h1>
+        <h2 className="mt-2 text-lg text-slate">{place.country}</h2>
 
-      <p>Added by {place.contributor}</p>
+        <p className="mt-4 text-sm text-slate">
+          Added by @{""}
+          <span className="font-medium text-ink">{place.contributor}</span>
+        </p>
+      </section>
 
-      <p>{place.category}</p>
+      {/* Personal contribution */}
+      <section className="mb-8 rounded-2xl border border-mist bg-white p-6 sm:p-8">
+        <p className="mb-2 text-sm font-medium uppercase tracking-wider text-moss">
+          Their connection
+        </p>
 
-      <p>{place.contribution}</p>
+        <p className="text-lg leading-relaxed text-ink">"{place.contribution}"</p>
+      </section>
 
-      {airQualityLoading && <p>Loading air quality data...</p>}
+      {/* Environmental conditions */}
+      <section>
+        <div className="mb-6">
+          <p className="mb-2 text-sm font-medium uppercase tracking-wider text-moss">
+            Environmental conditions
+          </p>
 
-      {airQualityError && <p>Unable to load air quality data.</p>}
+          <h2 className="font-display text-3xl font-semibold text-ink sm:text-4xl">
+            What is the air like right now?
+          </h2>
 
-      {airQuality && <AirQualityCard airQuality={airQuality} />}
+          <p className="mt-2 text-slate">
+            Current environmental data for {place.location}.
+          </p>
+        </div>
 
-      {weatherLoading && <p>Loading environmental conditions...</p>}
+        {/* Air quality loading */}
+        {airQualityLoading && (
+          <div className="rounded-2xl border border-mist bg-white p-8 text-center">
+            <div className="mx-auto mb-3 h-8 w-8 animate-spin rounded-full border-4 border-mist border-t-moss"></div>
+            <p className="text-slate">Loading air quality data...</p>
+          </div>
+        )}
 
-      {weatherError && <p>Unable to load environmental conditions.</p>}
+        {airQualityError && (
+          <div className="rounded-2xl border border-mist bg-white p-6">
+            <p className="font-medium text-ink">
+              Unable to load air quality data.
+            </p>
+            <p className="mt-1 text-sm text-slate">Please try again later.</p>
+          </div>
+        )}
 
-      {weather && airQuality && (
-        <WeatherCard uv={airQuality.uv_index} weather={weather} />
-      )}
-      {
-        //= "If airQuality exists, show the AirQualityCard component."
-      }
-      <button onClick={() => navigate(`/places/edit/${id}`)}>
-        Edit contribution
-      </button>
+        {airQuality && (
+          <div className="mb-8">
+            <AirQualityCard airQuality={airQuality} />
+          </div>
+        )}
 
-      <button onClick={handleDelete}>Delete place</button>
-    </div>
+        {/* Weather loading */}
+        {weatherLoading && (
+          <div className="rounded-2xl border border-mist bg-white p-8 text-center">
+            <div className="mx-auto mb-3 h-8 w-8 animate-spin rounded-full border-4 border-mist border-t-moss"></div>
+            <p className="text-slate">Loading environmental conditions...</p>
+          </div>
+        )}
+
+        {/* Weather error */}
+        {weatherError && (
+          <div className="rounded-2xl border border-mist bg-white p-6">
+            <p className="font-medium text-ink">
+              Unable to load environmental conditions.
+            </p>
+            <p className="mt-1 text-sm text-slate">Please try again later.</p>
+          </div>
+        )}
+
+        {/* Weather */}
+        {weather && airQuality && (
+          <WeatherCard uv={airQuality.uv_index} weather={weather} />
+        )}
+      </section>
+
+      {/* Actions */}
+      <section className="mt-10 flex flex-col gap-3 border-t border-mist pt-8 sm:flex-row">
+        <button
+          onClick={() => navigate(`/places/edit/${id}`)}
+          className="rounded-lg bg-moss px-5 py-3 font-medium text-white transition hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-moss/40"
+        >
+          Edit contribution
+        </button>
+
+        <button
+          onClick={handleDelete}
+          className="rounded-lg border border-mist bg-white px-5 py-3 font-medium text-slate transition hover:border-red-200 hover:text-red-600 focus:outline-none focus:ring-2 focus:ring-red-200"
+        >
+          Delete place
+        </button>
+      </section>
+    </main>
   );
 }
 

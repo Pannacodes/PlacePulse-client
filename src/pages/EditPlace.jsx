@@ -41,24 +41,45 @@ function EditPlace() {
   }
 
   return (
-    <div>
-      <h1>Edit</h1>
+    <main className="mx-auto w-full max-w-2xl px-5 py-10 sm:px-8 sm:py-14">
+      <div className="mb-8">
+        <p className="mb-2 text-sm font-medium uppercase tracking-wider text-moss">
+          Update your place
+        </p>
 
-      <form onSubmit={handleSubmit}>
-        <label>
-          Your name
+        <h1 className="font-display text-4xl font-bold text-ink sm:text-5xl">
+          Edit place
+        </h1>
+        <p className="mt-3 text-slate">
+          Update your connection or contribution to this place.
+        </p>
+      </div>
+      <form
+        onSubmit={handleSubmit}
+        className="space-y-6 rounded-2xl border border-mist bg-white p-6 sm:p-8"
+      >
+        {/* Your name */}
+        <div>
+          <label className="mb-2 block text-sm font-medium text-ink">
+            Your name
+          </label>
           <input
             type="text"
             value={contributor}
             onChange={(event) => setContributor(event.target.value)}
+            className="w-full rounded-lg border border-mist bg-haze px-4 py-3 text-ink outline-none transition focus:border-moss focus:ring-2 focus:ring-moss/20"
           />
-        </label>
+        </div>
 
-        <label>
-          How are you connected to this place?
+        {/* Connection */}
+        <div>
+          <label className="mb-2 block text-sm font-medium text-ink">
+            How are you connected to this place?
+          </label>
           <select
             value={category}
             onChange={(event) => setCategory(event.target.value)}
+            className="w-full rounded-lg border border-mist bg-haze px-4 py-3 text-ink outline-none transition focus:border-moss focus:ring-2 focus:ring-moss/20"
           >
             <option value="">Select one</option>
             <option value="Where I live">Where I live</option>
@@ -71,19 +92,33 @@ function EditPlace() {
             </option>
             <option value="Just curious">Just curious</option>
           </select>
-        </label>
+        </div>
 
-        <label>
-          Your contribution
+        {/* Contribution */}
+        <div>
+          <label className="mb-2 block text-sm font-medium text-ink">
+            Your contribution{" "}
+            <span className="font-normal text-slate">(optional)</span>
+          </label>
           <textarea
             value={contribution}
             onChange={(event) => setContribution(event.target.value)}
+            rows="5"
+            placeholder="You can share a story, a comment, a detail you want people to know."
+            className="w-full resize-y rounded-lg border border-mist bg-haze px-4 py-3 text-ink outline-none transition placeholder:text-slate/70 focus:border-moss focus:ring-2 focus:ring-moss/20"
           />
-        </label>
+        </div>
 
-        <button type="submit">Save changes</button>
+        {/* Submit */}
+
+        <button
+          type="submit"
+          className="w-full rounded-lg bg-moss px-5 py-3 font-medium text-white transition hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-moss/40 focus:ring-offset-2 sm:w-auto"
+        >
+          Save changes
+        </button>
       </form>
-    </div>
+    </main>
   );
 }
 

@@ -31,7 +31,9 @@ function Home() {
 
       {/* HOW IT WORKS */}
       <section className="border-t border-mist pt-10">
-        <h2>How it works</h2>
+        <h2 className="mb-8 font-display text-3xl font-semibold text-ink">
+          How it works
+        </h2>
         <div className="grid gap-6 md:grid-cols-3">
           <div className="rounded-xl border border-mist bg-white/40 p-6">
             <p className="mb-4 font-mono text-sm text-moss">01</p>

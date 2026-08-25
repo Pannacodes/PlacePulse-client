@@ -48,34 +48,64 @@ function AddPlace() {
   };
 
   return (
-    <div>
-      <h1>Add a place</h1>
+    <main className="mx-auto w-full max-w-2xl px-5 py-10 sm:px-8 sm:py-14">
+      <div className="mb-8">
+        <p className="mb-2 text-sm font-medium uppercase tracking-wider text-moss">
+          Share a place
+        </p>
 
-      <form onSubmit={handleSubmit}>
-        <label>
-          Your name
+        <h1 className="font-[Fraunces] text-4xl font-bold text-ink sm:text-5xl">
+          Add a place 🌍
+        </h1>
+        <p className="mt-3 text-slate">
+          Tell us about a place that means something to you and discover its
+          current environmental conditions.
+        </p>
+      </div>
+
+      <form
+        onSubmit={handleSubmit}
+        className="space-y-6 rounded-2xl border border-mist bg-white p-6 sm:p-8"
+      >
+        <div>
+          <label className="mb-2 block text-sm font-medium text-ink">
+            Your name
+          </label>
           <input
             type="text"
             value={contributor}
             onChange={(event) => setContributor(event.target.value)}
             required
+            className="w-full rounded-lg border border-mist bg-haze px-4 py-3 text-ink outline-none transition focus:border-moss focus:ring-2 focus:ring-moss/20"
           />
-        </label>
-        <label>
-          Location
+        </div>
+
+        <div>
+          <label className="mb-2 block text-sm font-medium text-ink">
+            Location
+          </label>
           <input
             type="text"
             value={locationName}
             onChange={(event) => setLocationName(event.target.value)}
+            placeholder="e.g. Barcelona"
             required
+            className="w-full rounded-lg border border-mist bg-haze px-4 py-3 text-ink outline-none transition focus:border-moss focus:ring-2 focus:ring-moss/20"
           />
-        </label>
-        <label>
-          How are you connected to this place?
+          <p className="mt-2 text-sm text-slate">
+            Enter a city, town or other location.
+          </p>
+        </div>
+
+        <div>
+          <label className="mb-2 block text-sm font-medium text-ink">
+            How are you connected to this place?
+          </label>
           <select
             value={category}
             onChange={(event) => setCategory(event.target.value)}
             required
+            className="w-full rounded-lg border border-mist bg-haze px-4 py-3 text-ink outline-none transition focus:border-moss focus:ring-2 focus:ring-moss/20"
           >
             <option value="">Select one</option>
             <option value="Where I live">Where I live</option>
@@ -88,18 +118,29 @@ function AddPlace() {
             </option>
             <option value="Just curious">Just curious</option>
           </select>
-        </label>
-        <label>
-          Your contribution
+        </div>
+
+        <div>
+          <label className="mb-2 block text-sm font-medium text-ink">
+            Your contribution {" "}
+            <span className="font-normal text-slate">(optional)</span>
+          </label>
           <textarea
             value={contribution}
             placeholder="You can share a story, a comment, a detail you want people to know."
             onChange={(event) => setContribution(event.target.value)}
+            rows="5"
+            className="w-full resize-y rounded-lg border border-mist bg-haze px-4 py-3 text-ink outline-none transition placeholder:text-slate/70 focus:border-moss focus:ring-2 focus:ring-moss/20"
           />
-        </label>
-        <button type="submit">Add place</button>
+        </div>
+        <button
+          type="submit"
+          className="w-full rounded-lg bg-moss px-5 py-3 font-medium text-white transition hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-moss/40 focus:ring-offset-2 sm:w-auto"
+        >
+          Add place
+        </button>
       </form>
-    </div>
+    </main>
   );
 }
 

@@ -12,23 +12,24 @@ import NotFound from "./pages/NotFound";
 function App() {
   return (
     <>
-    <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
+      <Navbar />
+      <main className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
+        <Routes>
+          <Route path="/" element={<Home />} />
 
-        <Route path="/about" element={<About />} />
+          <Route path="/about" element={<About />} />
 
-        <Route path="/places" element={<Places />} />
+          <Route path="/places" element={<Places />} />
 
-        <Route path="/places/:id" element={<PlaceDetails />} />
+          <Route path="/places/:id" element={<PlaceDetails />} />
 
-        <Route path="/places/add" element={<AddPlace />} />
+          <Route path="/places/add" element={<AddPlace />} />
 
-        <Route path="/places/edit/:id" element={<EditPlace />} />
+          <Route path="/places/edit/:id" element={<EditPlace />} />
 
-        <Route path="*" element={<NotFound />} />
-
-      </Routes>
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </main>
     </>
   );
 }

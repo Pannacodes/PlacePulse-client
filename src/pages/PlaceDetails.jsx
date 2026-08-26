@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import AirQualityCard from "../components/AirQualityCard";
 import WeatherCard from "../components/WeatherCard";
@@ -78,7 +79,7 @@ function PlaceDetails() {
   }
 
   const handleDelete = () => {
-    const confirmed = window.confirm("sure?");
+    const confirmed = window.confirm("Are you sure you want to delete this?");
     if (!confirmed) return;
 
     axios
@@ -95,6 +96,12 @@ function PlaceDetails() {
     <main className="mx-auto w-full max-w-5xl px-5 py-10 sm:px-8 sm:py-14">
       {/* Place header */}
       <section className="mb-10">
+        <Link
+          to="/places"
+          className="mb-6 inline-flex items-center gap-2 text-sm font-medium text-slate transition hover:text-moss"
+        >
+          ← Back to places
+        </Link>
         <p className="mb-2 text-sm font-medium uppercase tracking-wider text-moss">
           {place.category}
         </p>
@@ -115,7 +122,9 @@ function PlaceDetails() {
           Their connection
         </p>
 
-        <p className="text-lg leading-relaxed text-ink">"{place.contribution}"</p>
+        <p className="text-lg leading-relaxed text-ink">
+          "{place.contribution}"
+        </p>
       </section>
 
       {/* Environmental conditions */}

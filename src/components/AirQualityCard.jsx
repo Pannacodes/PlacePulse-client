@@ -44,42 +44,42 @@ function getAqiCategory(aqi) {
 function getPollutantCategory(value, pollutant) {
   // PM2.5
   if (pollutant === "pm2_5") {
-    if (value <= 5) return "Good";
-    if (value <= 15) return "Fair";
-    if (value <= 50) return "Moderate";
-    if (value <= 90) return "Poor";
-    if (value <= 140) return "Very poor";
-    return "Extremely poor";
+    if (value <= 5) return { label: "Good", color: "text-moss" };
+    if (value <= 15) return { label: "Fair", color: "text-moss" };
+    if (value <= 50) return { label: "Moderate", color: "text-[#8f947f]" };
+    if (value <= 90) return { label: "Poor", color: "text-[#b27b55]" };
+    if (value <= 140) return { label: "Very poor", color: "text-rust" };
+    return { label: "Extremely poor", color: "text-[#914d38]" };
   }
 
   // PM10
   if (pollutant === "pm10") {
-    if (value <= 15) return "Good";
-    if (value <= 45) return "Fair";
-    if (value <= 120) return "Moderate";
-    if (value <= 195) return "Poor";
-    if (value <= 270) return "Very poor";
-    return "Extremely poor";
+    if (value <= 15) return { label: "Good", color: "text-moss" };
+    if (value <= 45) return { label: "Fair", color: "text-moss" };
+    if (value <= 120) return { label: "Moderate", color: "text-[#8f947f]" };
+    if (value <= 195) return { label: "Poor", color: "text-[#b27b55]" };
+    if (value <= 270) return { label: "Very poor", color: "text-rust" };
+    return { label: "Extremely poor", color: "text-[#914d38]" };
   }
 
   // Nitrogen dioxide
   if (pollutant === "nitrogen_dioxide") {
-    if (value <= 10) return "Good";
-    if (value <= 25) return "Fair";
-    if (value <= 60) return "Moderate";
-    if (value <= 100) return "Poor";
-    if (value <= 150) return "Very poor";
-    return "Extremely poor";
+    if (value <= 10) return { label: "Good", color: "text-moss" };
+    if (value <= 25) return { label: "Fair", color: "text-moss" };
+    if (value <= 60) return { label: "Moderate", color: "text-[#8f947f]" };
+    if (value <= 100) return { label: "Poor", color: "text-[#b27b55]" };
+    if (value <= 150) return { label: "Very poor", color: "text-rust" };
+    return { label: "Extremely poor", color: "text-[#914d38]" };
   }
 
   // Ozone
   if (pollutant === "ozone") {
-    if (value <= 60) return "Good";
-    if (value <= 100) return "Fair";
-    if (value <= 120) return "Moderate";
-    if (value <= 160) return "Poor";
-    if (value <= 180) return "Very poor";
-    return "Extremely poor";
+    if (value <= 60) return { label: "Good", color: "text-moss" };
+    if (value <= 100) return { label: "Fair", color: "text-moss" };
+    if (value <= 120) return { label: "Moderate", color: "text-[#8f947f]" };
+    if (value <= 160) return { label: "Poor", color: "text-[#b27b55]" };
+    if (value <= 180) return { label: "Very poor", color: "text-rust" };
+    return { label: "Extremely poor", color: "text-[#914d38]" };
   }
 }
 
@@ -120,12 +120,14 @@ function AirQualityCard({ airQuality }) {
 
       {/* Main AQI */}
       <div className="rounded-xl border border-mist bg-haze p-6">
-        <p className={`font-[Fraunces] text-3xl font-semibold sm:text-4xl ${aqiCategory.color}`}>
+        <p
+          className={`font-[Fraunces] text-3xl font-semibold sm:text-4xl ${aqiCategory.color}`}
+        >
           {aqiCategory.label}
         </p>
 
         <p className="mt-2 text-sm text-slate">
-          European AQI : {" "}
+          European AQI :{" "}
           <span className="font-mono text-ink">{airQuality.european_aqi}</span>
         </p>
 
@@ -133,7 +135,7 @@ function AirQualityCard({ airQuality }) {
 
         {/* AQI clarity gauge */}
         <div className="mt-6">
-          <div className="relative h-2 rounded-full bg-gradient-to-r from-moss via-[#a9ad9f] to-rust">
+          <div className="relative h-2 rounded-full bg-linear-to-r from-moss via-[#a9ad9f] to-rust">
             <div
               className="absolute top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-white bg-ink shadow-sm"
               style={{ left: `${aqiPosition}%` }}
@@ -177,8 +179,10 @@ function AirQualityCard({ airQuality }) {
                 <InfoButton text="Fine particles smaller than 2.5 micrometers. Because they are very small, they can penetrate deep into the lungs. Long-term exposure is associated with respiratory and cardiovascular health effects." />
               </div>
               <div className="mt-5">
-                <p className="font-[Fraunces] text-2xl font-semibold text-moss">
-                  {pm25Category}
+                <p
+                  className={`font-[Fraunces] text-2xl font-semibold ${pm25Category.color}`}
+                >
+                  {pm25Category.label}
                 </p>
 
                 <p className="mt-1 font-mono text-sm text-slate">
@@ -198,8 +202,10 @@ function AirQualityCard({ airQuality }) {
                 <InfoButton text="Particles smaller than 10 micrometers that can enter the respiratory system. They can irritate the airways and are commonly associated with dust, traffic and other sources." />
               </div>
               <div className="mt-5">
-                <p className="font-[Fraunces] text-2xl font-semibold text-moss">
-                  {pm10Category}
+                <p
+                  className={`font-[Fraunces] text-2xl font-semibold ${pm10Category.color}`}
+                >
+                  {pm10Category.label}
                 </p>
 
                 <p className="mt-1 font-mono text-sm text-slate">
@@ -220,8 +226,10 @@ function AirQualityCard({ airQuality }) {
               </div>
 
               <div className="mt-5">
-                <p className="font-[Fraunces] text-2xl font-semibold text-moss">
-                  {nitrogenDioxideCategory}
+                <p
+                  className={`font-[Fraunces] text-2xl font-semibold ${nitrogenDioxideCategory.color}`}
+                >
+                  {nitrogenDioxideCategory.label}
                 </p>
 
                 <p className="mt-1 font-mono text-sm text-slate">
@@ -242,8 +250,10 @@ function AirQualityCard({ airQuality }) {
                 <InfoButton text="Ground-level ozone is formed when sunlight reacts with pollutants such as nitrogen oxides and other gases. High levels can irritate the lungs and airways and may worsen respiratory symptoms." />
               </div>
               <div className="mt-5">
-                <p className="font-[Fraunces] text-2xl font-semibold text-moss">
-                  {ozoneCategory}
+                <p
+                  className={`font-[Fraunces] text-2xl font-semibold ${ozoneCategory.color}`}
+                >
+                  {ozoneCategory.label}
                 </p>
 
                 <p className="mt-1 font-mono text-sm text-slate">

@@ -2,8 +2,11 @@ import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
-    <nav className="flex items-center justify-between border-b border-mist px-4 py-4">
-      <Link to="/" className="font-display text-2xl font-semibold text-ink">
+    <nav className="sticky top-0 z-50 flex items-center justify-between border-b border-mist bg-white/90 px-4 py-4 backdrop-blur-[2px]">
+      <Link
+        to="/"
+        className="font-display text-2xl font-semibold text-ink  hover:text-moss"
+      >
         Home
       </Link>
       <div className="flex gap-6 font-sans">

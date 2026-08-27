@@ -98,7 +98,7 @@ function About() {
             </h3>
 
             <p className="mt-4 leading-relaxed text-slate">
-              If you've worked with Anna, you've probably met Réglisse. She's an
+              If you've worked with me, you've probably met Réglisse. She's an
               attention seeker and has figured out that walking in front of the
               laptop is a very effective way to get pats and scratches. When
               she's not on screen, she's usually sleeping right next to it.
@@ -110,8 +110,8 @@ function About() {
 
             <p className="mt-4 leading-relaxed text-slate">
               Béli is much more well behaved. He won't jump onto the table for
-              attention, but he'll come and bump his head against Anna's legs to
-              let her know he's there and would also like some affection.
+              attention, but he'll come and bump his head against my legs to
+              let me know he's there and would also like some affection.
             </p>
 
             <p className="mt-5 font-medium text-moss">
@@ -143,7 +143,7 @@ function About() {
           ].map((technology) => (
             <div
               key={technology}
-              className="rounded-xl border border-mist bg-white/60 px-5 py-4 text-sm font-medium text-ink"
+              className="rounded-xl border border-mist bg-surface/60 px-5 py-4 text-sm font-medium text-ink"
             >
               {technology}
             </div>
@@ -152,7 +152,7 @@ function About() {
       </section>
 
       {/* GitHub */}
-      <section className="rounded-2xl border border-mist bg-white p-6 sm:p-8">
+      <section className="rounded-2xl border border-mist bg-surface p-6 sm:p-8">
         <p className="mb-2 text-sm font-medium uppercase tracking-wider text-moss">
           Explore the code
         </p>
@@ -168,7 +168,7 @@ function About() {
           href="https://github.com/Pannacodes"
           target="_blank"
           rel="noreferrer"
-          className="mt-6 inline-flex rounded-lg border border-moss px-5 py-2.5 text-sm font-medium text-moss transition hover:bg-moss hover:text-white"
+          className="mt-6 inline-flex rounded-lg border border-moss px-5 py-2.5 text-sm font-medium text-moss transition hover:bg-moss hover:text-surface"
         >
           Visit my GitHub →
         </a>

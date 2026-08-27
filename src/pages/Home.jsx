@@ -8,8 +8,14 @@ function Home() {
         <p className="mb-3 font-mono text-sm uppercase tracking-wider text-slate">
           Environmental conditions, connected to people
         </p>
-        <h1 className="mb-6 font-display text-5xl font-semibold leading-tight text-ink sm:text-6xl">
+        <h1 className="mb-6 flex items-center gap-3 font-display text-5xl font-semibold leading-tight text-ink sm:text-6xl">
           PlacePulse
+          <img
+            src="/placepulse-icon-mark-transparent-2.svg"
+            alt=""
+            aria-hidden="true"
+            className="h-12 w-12 sm:h-14 sm:w-14"
+          />
         </h1>
 
         <h2 className="mb-5 max-w-2xl font-display text-2xl font-medium text-ink sm:text-3xl">
@@ -22,7 +28,7 @@ function Home() {
         </p>
         <Link
           to="/places"
-          className="inline-block rounded-lg bg-moss px-6 py-3 font-medium text-white hover:opacity-90"
+          className="inline-block rounded-lg bg-moss px-6 py-3 font-medium text-surface hover:opacity-90"
         >
           {" "}
           Explore places
@@ -35,7 +41,7 @@ function Home() {
           How it works
         </h2>
         <div className="grid gap-6 md:grid-cols-3">
-          <div className="rounded-xl border border-mist bg-white/40 p-6">
+          <div className="rounded-xl border border-mist bg-surface/40 p-6">
             <p className="mb-4 font-mono text-sm text-moss">01</p>
             <h3 className="mb-3 font-display text-xl font-semibold">
               Add a place
@@ -45,7 +51,7 @@ function Home() {
               it.
             </p>
           </div>
-          <div className="rounded-xl border border-mist bg-white/40 p-6">
+          <div className="rounded-xl border border-mist bg-surface/40 p-6">
             <p className="mb-4 font-mono text-sm text-moss">02</p>
             <h3 className="mb-3 font-display text-xl font-semibold">
               Explore places
@@ -55,7 +61,7 @@ function Home() {
               environmental conditions.
             </p>
           </div>
-          <div className="rounded-xl border border-mist bg-white/40 p-6">
+          <div className="rounded-xl border border-mist bg-surface/40 p-6">
             <p className="mb-4 font-mono text-sm text-moss">03</p>
             <h3 className="mb-3 font-display text-xl font-semibold">
               Understand the environment
@@ -69,7 +75,7 @@ function Home() {
       </section>
 
       {/* AIR POLLUTION */}
-      <section className="max-w-3xl border-t border-mist pt-10">
+      <section className="border-t border-mist pt-10">
         <p className="mb-2 font-mono text-sm uppercase tracking-wider text-slate">
           Environmental context
         </p>
@@ -100,7 +106,7 @@ function Home() {
       </section>
 
       {/* CATEGORIES */}
-      <section className="rounded-xl border border-mist bg-white/40 p-6 sm:p-8">
+      <section className="rounded-xl border border-mist bg-surface/40 p-6 sm:p-8">
         <h2 className="mb-5 font-display text-3xl font-semibold text-ink">
           Understanding the categories
         </h2>
@@ -139,18 +145,18 @@ function Home() {
 
       {/* EXPLORE */}
       <section className="rounded-xl bg-moss px-6 py-10 text-center sm:px-10">
-        <h2 className="mb-3 font-display text-3xl font-semibold text-white">
+        <h2 className="mb-3 font-display text-3xl font-semibold text-surface">
           Explore places
         </h2>
 
-        <p className="mx-auto mb-6 max-w-xl leading-relaxed text-white/80">
+        <p className="mx-auto mb-6 max-w-xl leading-relaxed text-surface/80">
           Discover places shared by other contributors and see their current
           environmental conditions.
         </p>
 
         <Link
           to="/places"
-          className="inline-block rounded-lg bg-white px-6 py-3 font-medium text-moss hover:bg-haze"
+          className="inline-block rounded-lg bg-surface px-6 py-3 font-medium text-moss hover:bg-haze"
         >
           Explore places
         </Link>

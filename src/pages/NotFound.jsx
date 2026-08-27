@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
 function NotFound() {
@@ -22,7 +21,7 @@ function NotFound() {
         </p>
 
         {/* GIF */}
-        <div className="my-8 overflow-hidden bg-haze p-2">
+        <div className="my-8 overflow-hidden rounded-lg border border-mist bg-surface p-2">
           <img
             src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdnNnd3F0MDBqa2piZGZ3bjhvemh3dmNrcWthMTlscm12djlsc25paCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/XzXgeTP0VaJfG/giphy.gif"
             alt="Funny astronaut playing golf animation"
@@ -32,7 +31,7 @@ function NotFound() {
         {/* Return button */}
         <Link
           to="/places"
-          className="rounded-lg bg-moss px-5 py-3 text-sm font-medium text-white transition hover:-translate-y-0.5 hover:bg-ink"
+          className="rounded-lg bg-moss px-5 py-3 text-sm font-medium text-surface transition hover:-translate-y-0.5 hover:bg-ink"
         >
           Explore places on Planet Earth →
         </Link>

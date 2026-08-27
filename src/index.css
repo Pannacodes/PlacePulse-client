@@ -2,14 +2,25 @@
 
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
-  --color-haze: #f3f4ef;
-  --color-mist: #e4e6dd;
-  --color-moss: #64815f;
-  --color-fog-blue: #7c9ca6;
-  --color-ink: #2b302c;
-  --color-slate: #6b7268;
   --color-rust: #b66a4a;
+
+  --color-background: #f3f4ef;
+  --color-surface: #ffffff;
+  --color-border: #e4e6dd;
+  --color-primary: #64815f;
+  --color-secondary: #7c9ca6;
+  --color-text: #2b302c;
+  --color-text-secondary: #6b7268;
+
+  --color-haze: var(--color-background);
+  --color-mist: var(--color-border);
+  --color-moss: var(--color-primary);
+  --color-fog-blue: var(--color-secondary);
+  --color-ink: var(--color-text);
+  --color-slate: var(--color-text-secondary);
 
   --font-display: "Fraunces", serif;
   --font-sans: "Inter", sans-serif;
@@ -17,9 +28,28 @@
 }
 
 body {
-  margin: 0;
+  @apply font-["Inter"] m-0;
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
 
-  background-color: var(--color-haze);
-  color: var(--color-ink);
-  font-family: "Inter", sans-serif;
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+html {
+  background-color: var(--color-background);
+  color-scheme: light;
+}
+
+.dark {
+  --color-background: #1b211d;
+  --color-surface: #242b25;
+  --color-border: #3a4238;
+  --color-primary: #8fb088;
+  --color-secondary: #9fc1ca;
+  --color-text: #edefe7;
+  --color-text-secondary: #9ca598;
 }

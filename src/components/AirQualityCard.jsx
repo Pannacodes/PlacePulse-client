@@ -107,7 +107,7 @@ function AirQualityCard({ airQuality }) {
   const ozoneCategory = getPollutantCategory(airQuality.ozone, "ozone");
 
   return (
-    <section className="mt-8 rounded-2xl border border-mist bg-white p-6 sm:p-8">
+    <section className="mt-8 rounded-2xl border border-mist bg-surface p-6 sm:p-8">
       {/* Main heading */}
       <div className="mb-6">
         <p className="mb-1 text-sm font-medium uppercase tracking-wider text-moss">
@@ -135,9 +135,9 @@ function AirQualityCard({ airQuality }) {
 
         {/* AQI clarity gauge */}
         <div className="mt-6">
-          <div className="relative h-2 rounded-full bg-linear-to-r from-moss via-[#a9ad9f] to-rust">
+          <div className="relative h-2 rounded-full bg-linear-to-r from-moss via-[#a9ad9f] to-rust dark:via-[#c9cfc0] dark:to-[#d18f5c]">
             <div
-              className="absolute top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-white bg-ink shadow-sm"
+              className="absolute top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-surface bg-ink shadow-sm"
               style={{ left: `${aqiPosition}%` }}
               aria-hidden="true"
             />

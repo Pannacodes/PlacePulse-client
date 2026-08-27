@@ -59,7 +59,7 @@ function EditPlace() {
       </div>
       <form
         onSubmit={handleSubmit}
-        className="space-y-6 rounded-2xl border border-mist bg-white p-6 sm:p-8"
+        className="space-y-6 rounded-2xl border border-mist bg-surface p-6 sm:p-8"
       >
         {/* Your name */}
         <div>
@@ -116,7 +116,7 @@ function EditPlace() {
 
         <button
           type="submit"
-          className="w-full rounded-lg bg-moss px-5 py-3 font-medium text-white transition hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-moss/40 focus:ring-offset-2 sm:w-auto"
+          className="w-full rounded-lg bg-moss px-5 py-3 font-medium text-surface transition hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-moss/40 focus:ring-offset-2 sm:w-auto"
         >
           Save changes
         </button>

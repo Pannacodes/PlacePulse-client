@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 function PlaceCard({ place }) {
   return (
     <Link to={`/places/${place.id}`} className="group block h-full">
-      <article className="flex h-full flex-col justify-between rounded-xl border border-mist bg-white/50 p-6 transition hover:-translate-y-1 hover:border-moss">
+      <article className="flex h-full flex-col justify-between rounded-xl border border-mist bg-surface/50 p-6 transition hover:-translate-y-1 hover:border-moss">
         <div>
           <div className="mb-5 flex items-start justify-between gap-4">
             <div>

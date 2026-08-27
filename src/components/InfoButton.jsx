@@ -1,4 +1,3 @@
-import React from "react";
 import { useState } from "react";
 
 function InfoButton({ text }) {
@@ -16,7 +15,7 @@ function InfoButton({ text }) {
       </button>
 
       {showInfo && (
-        <span className="absolute right-0 top-8 z-10 w-64 rounded-lg border border-mist bg-white p-4 text-left text-sm leading-relaxed text-slate shadow-lg">
+        <span className="absolute right-0 top-8 z-10 w-64 rounded-lg border border-mist bg-surface p-4 text-left text-sm leading-relaxed text-slate shadow-lg">
           {text}
         </span>
       )}

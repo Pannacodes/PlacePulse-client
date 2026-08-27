@@ -1,5 +1,3 @@
-import React from "react";
-
 function getUvCategory(uv) {
   if (uv <= 2) {
     return "Low";
@@ -18,7 +16,7 @@ function WeatherCard({ uv, weather }) {
   const uvCategory = getUvCategory(uv);
 
   return (
-    <section className="mt-8 rounded-2xl border border-mist bg-white p-6 sm:p-8">
+    <section className="mt-8 rounded-2xl border border-mist bg-surface p-6 sm:p-8">
       {/* Main heading */}
       <div className="mb-6">
         <p className="mb-1 text-sm font-medium uppercase tracking-wider text-fog-blue">

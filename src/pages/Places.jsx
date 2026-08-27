@@ -18,8 +18,7 @@ function Places() {
     setSearch(search);
   };
 
-  const countries = [ ...new Set( places.map((place) => place.country))];
-console.log(places)
+  const countries = ["All", ...new Set( places.map((place) => place.country))];
   const filteredPlaces = places.filter((place) => {
     const matchesSearch =
       place.location.toLowerCase().includes(search.toLowerCase()) ||
@@ -89,14 +88,14 @@ console.log(places)
         </div>
         <Link
           to="/places/add"
-          className="inline-block self-start rounded-lg bg-moss px-5 py-3 font-medium text-white hover:opacity-90 sm:self-auto"
+          className="inline-block self-start rounded-lg bg-moss px-5 py-3 font-medium text-surface hover:opacity-90 sm:self-auto"
         >
           + Add a place
         </Link>
       </section>
 
       {/* FILTERS */}
-      <section className="rounded-xl border border-mist bg-white/40 p-5 sm:p-6">
+      <section className="rounded-xl border border-mist bg-surface/40 p-5 sm:p-6">
         <div className="grid gap-4 md:grid-cols-3">
           <div className="md:col-span-1">
             <label className="mb-2 block text-sm font-medium text-ink">
@@ -107,7 +106,7 @@ console.log(places)
               placeholder="Search places or contributors..."
               value={search}
               onChange={handleInputChange}
-              className="w-full rounded-lg border border-mist bg-white px-4 py-3 outline-none focus:border-moss"
+              className="w-full rounded-lg border border-mist bg-surface px-4 py-3 outline-none focus:border-moss"
             />
           </div>
 
@@ -118,7 +117,7 @@ console.log(places)
             <select
               value={categoryFilter}
               onChange={(event) => setCategoryFilter(event.target.value)}
-              className="w-full rounded-lg border border-mist bg-white px-4 py-3 outline-none focus:border-moss"
+              className="w-full rounded-lg border border-mist bg-surface px-4 py-3 outline-none focus:border-moss"
             >
               <option value="All">All connections</option>
               <option value="Where I live">Where I live</option>
@@ -142,7 +141,7 @@ console.log(places)
             <select
               value={countryFilter}
               onChange={(event) => setCountryFilter(event.target.value)}
-              className="w-full rounded-lg border border-mist bg-white px-4 py-3 outline-none focus:border-moss"
+              className="w-full rounded-lg border border-mist bg-surface px-4 py-3 outline-none focus:border-moss"
             >
               {countries.map((country) => (
                 <option key={country} value={country}>
@@ -170,7 +169,7 @@ console.log(places)
             ))}
           </div>
         ) : (
-          <div className="rounded-xl border border-mist bg-white/40 px-6 py-12 text-center">
+          <div className="rounded-xl border border-mist bg-surface/40 px-6 py-12 text-center">
             <h2 className="mb-2 font-display text-2xl text-ink">
               No places found
             </h2>

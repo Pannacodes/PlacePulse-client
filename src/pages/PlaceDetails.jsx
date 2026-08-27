@@ -118,7 +118,7 @@ function PlaceDetails() {
       </section>
 
       {/* Personal contribution */}
-      <section className="mb-8 rounded-2xl border border-mist bg-white p-6 sm:p-8">
+      <section className="mb-8 rounded-2xl border border-mist bg-surface p-6 sm:p-8">
         <p className="mb-2 text-sm font-medium uppercase tracking-wider text-moss">
           Their connection
         </p>
@@ -146,14 +146,14 @@ function PlaceDetails() {
 
         {/* Air quality loading */}
         {airQualityLoading && (
-          <div className="rounded-2xl border border-mist bg-white p-8 text-center">
+          <div className="rounded-2xl border border-mist bg-surface p-8 text-center">
             <div className="mx-auto mb-3 h-8 w-8 animate-spin rounded-full border-4 border-mist border-t-moss"></div>
             <p className="text-slate">Loading air quality data...</p>
           </div>
         )}
 
         {airQualityError && (
-          <div className="rounded-2xl border border-mist bg-white p-6">
+          <div className="rounded-2xl border border-mist bg-surface p-6">
             <p className="font-medium text-ink">
               Unable to load air quality data.
             </p>
@@ -169,7 +169,7 @@ function PlaceDetails() {
 
         {/* Weather loading */}
         {weatherLoading && (
-          <div className="rounded-2xl border border-mist bg-white p-8 text-center">
+          <div className="rounded-2xl border border-mist bg-surface p-8 text-center">
             <div className="mx-auto mb-3 h-8 w-8 animate-spin rounded-full border-4 border-mist border-t-moss"></div>
             <p className="text-slate">Loading environmental conditions...</p>
           </div>
@@ -177,7 +177,7 @@ function PlaceDetails() {
 
         {/* Weather error */}
         {weatherError && (
-          <div className="rounded-2xl border border-mist bg-white p-6">
+          <div className="rounded-2xl border border-mist bg-surface p-6">
             <p className="font-medium text-ink">
               Unable to load environmental conditions.
             </p>
@@ -195,14 +195,14 @@ function PlaceDetails() {
       <section className="mt-10 flex flex-col gap-3 border-t border-mist pt-8 sm:flex-row">
         <button
           onClick={() => navigate(`/places/edit/${id}`)}
-          className="rounded-lg bg-moss px-5 py-3 font-medium text-white transition hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-moss/40"
+          className="rounded-lg bg-moss px-5 py-3 font-medium text-surface transition hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-moss/40"
         >
           Edit contribution
         </button>
 
         <button
           onClick={handleDelete}
-          className="rounded-lg border border-mist bg-white px-5 py-3 font-medium text-slate transition hover:border-red-200 hover:text-red-600 focus:outline-none focus:ring-2 focus:ring-red-200"
+          className="rounded-lg border border-mist bg-surface px-5 py-3 font-medium text-slate transition hover:border-red-200 hover:text-red-600 focus:outline-none focus:ring-2 focus:ring-red-200"
         >
           Delete place
         </button>

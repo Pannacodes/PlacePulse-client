@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
-const api = import.meta.env.VITE_API_URL
+const api = import.meta.env.VITE_API_URL;
 function AddPlace() {
   const navigate = useNavigate();
   const [contributor, setContributor] = useState("");
@@ -36,12 +37,10 @@ function AddPlace() {
           contribution,
         }; // = "Create the object that our PlacePulse database needs, using some information from the form and some information from Open-Meteo."
 
-        axios
-          .post(api + "/places", newPlace)
-          .then((response) => {
-            console.log(response.data);
-            navigate(`/places/`);
-          });
+        axios.post(api + "/places", newPlace).then((response) => {
+          console.log(response.data);
+          navigate(`/places/`);
+        });
       })
       .catch((error) => {
         console.log(error);
@@ -50,6 +49,12 @@ function AddPlace() {
 
   return (
     <main className="mx-auto w-full max-w-2xl px-5 py-10 sm:px-8 sm:py-14">
+      <Link
+        to="/places"
+        className="mb-6 inline-flex items-center gap-2 text-sm font-medium text-slate transition hover:text-moss"
+      >
+        ← Back to places
+      </Link>
       <div className="mb-8">
         <p className="mb-2 text-sm font-medium uppercase tracking-wider text-moss">
           Share a place
@@ -63,10 +68,9 @@ function AddPlace() {
           current environmental conditions.
         </p>
       </div>
-
       <form
         onSubmit={handleSubmit}
-        className="space-y-6 rounded-2xl border border-mist bg-white p-6 sm:p-8"
+        className="space-y-6 rounded-2xl border border-mist bg-surface p-6 sm:p-8"
       >
         <div>
           <label className="mb-2 block text-sm font-medium text-ink">
@@ -136,7 +140,7 @@ function AddPlace() {
         </div>
         <button
           type="submit"
-          className="w-full rounded-lg bg-moss px-5 py-3 font-medium text-white transition hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-moss/40 focus:ring-offset-2 sm:w-auto"
+          className="w-full rounded-lg bg-moss px-5 py-3 font-medium text-surface transition hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-moss/40 focus:ring-offset-2 sm:w-auto"
         >
           Add place
         </button>

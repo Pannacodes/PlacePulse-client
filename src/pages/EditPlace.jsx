@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 
+
+const api = import.meta.env.VITE_API_URL
+
 function EditPlace() {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -12,7 +15,7 @@ function EditPlace() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5005/places/${id}`)
+      .get(`${api}/places/${id}`)
       .then((response) => {
         setContributor(response.data.contributor);
         setCategory(response.data.category);
@@ -27,7 +30,7 @@ function EditPlace() {
     event.preventDefault();
 
     axios
-      .patch(`http://localhost:5005/places/${id}`, {
+      .patch(`${api}/places/${id}`, {
         contributor,
         category,
         contribution,

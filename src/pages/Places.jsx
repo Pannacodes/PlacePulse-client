@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 import PlaceCard from "../components/PlaceCard";
-
+const api = import.meta.env.VITE_API_URL
 function Places() {
   const [places, setPlaces] = useState([]); //= creates an empty array initially
   const [search, setSearch] = useState("");
@@ -18,8 +18,8 @@ function Places() {
     setSearch(search);
   };
 
-  const countries = ["All", ...new Set(places.map((place) => place.country))];
-
+  const countries = [ ...new Set( places.map((place) => place.country))];
+console.log(places)
   const filteredPlaces = places.filter((place) => {
     const matchesSearch =
       place.location.toLowerCase().includes(search.toLowerCase()) ||
@@ -35,7 +35,7 @@ function Places() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5005/places")
+      .get(api + "/places")
       .then((response) => {
         setPlaces(response.data);
         setLoading(false);

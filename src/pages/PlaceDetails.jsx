@@ -7,6 +7,7 @@ import AirQualityCard from "../components/AirQualityCard";
 import WeatherCard from "../components/WeatherCard";
 import NotFound from "./NotFound";
 
+const api = import.meta.env.VITE_API_URL
 function PlaceDetails() {
   const { id } = useParams(); // = get the id
   const navigate = useNavigate();
@@ -24,7 +25,7 @@ function PlaceDetails() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5005/places/${id}`)
+      .get(`${api}/places/${id}`)
       .then((response) => {
         setPlace(response.data);
       })
@@ -83,7 +84,7 @@ function PlaceDetails() {
     if (!confirmed) return;
 
     axios
-      .delete(`http://localhost:5005/places/${id}`)
+      .delete(`${api}/places/${id}`)
       .then(() => {
         navigate("/places");
       })

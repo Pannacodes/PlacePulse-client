@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
+const api = import.meta.env.VITE_API_URL
 function AddPlace() {
   const navigate = useNavigate();
   const [contributor, setContributor] = useState("");
@@ -36,7 +37,7 @@ function AddPlace() {
         }; // = "Create the object that our PlacePulse database needs, using some information from the form and some information from Open-Meteo."
 
         axios
-          .post("http://localhost:5005/places", newPlace)
+          .post(api + "/places", newPlace)
           .then((response) => {
             console.log(response.data);
             navigate(`/places/`);
@@ -122,7 +123,7 @@ function AddPlace() {
 
         <div>
           <label className="mb-2 block text-sm font-medium text-ink">
-            Your contribution {" "}
+            Your contribution {""}
             <span className="font-normal text-slate">(optional)</span>
           </label>
           <textarea

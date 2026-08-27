@@ -22,7 +22,7 @@ function NotFound() {
         </p>
 
         {/* GIF */}
-        <div className="my-8 overflow-hidden rounded-2xl border border-mist bg-haze p-2">
+        <div className="my-8 overflow-hidden bg-haze p-2">
           <img
             src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdnNnd3F0MDBqa2piZGZ3bjhvemh3dmNrcWthMTlscm12djlsc25paCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/XzXgeTP0VaJfG/giphy.gif"
             alt="Funny astronaut playing golf animation"
@@ -34,7 +34,7 @@ function NotFound() {
           to="/places"
           className="rounded-lg bg-moss px-5 py-3 text-sm font-medium text-white transition hover:-translate-y-0.5 hover:bg-ink"
         >
-          <button>Explore places on Planet Earth →</button>
+          Explore places on Planet Earth →
         </Link>
       </section>
     </main>

@@ -3,7 +3,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 import PlaceCard from "../components/PlaceCard";
-const api = import.meta.env.VITE_API_URL
+import LoadingSpinner from "../components/LoadingSpinner";
+const api = import.meta.env.VITE_API_URL;
 function Places() {
   const [places, setPlaces] = useState([]); //= creates an empty array initially
   const [search, setSearch] = useState("");
@@ -18,7 +19,7 @@ function Places() {
     setSearch(search);
   };
 
-  const countries = ["All", ...new Set( places.map((place) => place.country))];
+  const countries = ["All", ...new Set(places.map((place) => place.country))];
   const filteredPlaces = places.filter((place) => {
     const matchesSearch =
       place.location.toLowerCase().includes(search.toLowerCase()) ||
@@ -48,11 +49,7 @@ function Places() {
   // "When this page loads, get some data."
 
   if (loading) {
-    return (
-      <div className="py-16 text-center">
-        <p className="font-mono text-sm text-slate">Loading places...</p>
-      </div>
-    );
+    return <LoadingSpinner />;
   }
   if (error) {
     return (
